@@ -1,5 +1,7 @@
+// app/page.js
 "use client";
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link"; // ← add this
 import CafeCard from "@/components/CafeCard";
 import { loadStamps, saveStamps } from "@/lib/storage";
 
@@ -26,7 +28,9 @@ export default function HomePage() {
 
   function onQuickSearch(e) {
     e.preventDefault();
-    window.location.href = q.trim() ? `/cafes?q=${encodeURIComponent(q.trim())}` : "/cafes";
+    window.location.href = q.trim()
+      ? `/cafes?q=${encodeURIComponent(q.trim())}`
+      : "/cafes";
   }
 
   return (
@@ -37,18 +41,31 @@ export default function HomePage() {
           Find local cafés, see what’s popular, leave reviews, and collect digital stamps—just like a café passport.
         </p>
         <div className="flex justify-center gap-3">
-          <a href="/cafes" className="px-4 py-2 rounded-xl bg-amber-700 text-white font-medium">Browse Cafés</a>
-          <a href="/passport" className="px-4 py-2 rounded-xl bg-white border font-medium">View Passport</a>
+          {/* was <a href="/cafes"> */}
+          <Link href="/cafes" className="px-4 py-2 rounded-xl bg-amber-700 text-white font-medium">
+            Browse Cafés
+          </Link>
+          {/* was <a href="/passport"> */}
+          <Link href="/passport" className="px-4 py-2 rounded-xl bg-white border font-medium">
+            View Passport
+          </Link>
         </div>
       </section>
 
       <section className="bg-white rounded-xl shadow p-5">
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-gray-100">Featured</span>
+        <div className="flex items-center justify-center mb-4">
+          <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-gray-100">
+            Featured
+          </span>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           {top.map((c) => (
-            <CafeCard key={c.id} cafe={c} stamped={stamps.has(c.id)} onToggleStamp={toggleStamp} />
+            <CafeCard
+              key={c.id}
+              cafe={c}
+              stamped={stamps.has(c.id)}
+              onToggleStamp={toggleStamp}
+            />
           ))}
         </div>
       </section>
@@ -61,9 +78,11 @@ export default function HomePage() {
             type="text"
             placeholder='Try "latte" or "Beltline"'
             value={q}
-            onChange={(e) => setQ(e.target.value)}
+            onChange={(e)=>setQ(e.target.value)}
           />
-          <button type="submit" className="px-4 py-2 rounded-xl bg-gray-900 text-white">Search</button>
+          <button type="submit" className="px-4 py-2 rounded-xl bg-gray-900 text-white">
+            Search
+          </button>
         </form>
       </section>
     </div>
