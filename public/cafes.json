@@ -1,0 +1,152 @@
+[
+  {
+    "id": "analog-17ave",
+    "name": "Analog Coffee - 17 Ave",
+    "neighborhood": "Beltline",
+    "address": "740 17 Ave SW, Calgary, AB",
+    "rating": 5,
+    "hours": "Mon–Sun 7:00–19:00",
+    "bestSellers": ["Latte", "Cortado", "Pour Over"],
+    "coords": { "lat": 51.0371, "lng": -114.0797 }
+  },
+  {
+    "id": "monogram-britannia",
+    "name": "Monogram Coffee - Britannia",
+    "neighborhood": "Britannia",
+    "address": "4104 16 St SW, Calgary, AB",
+    "rating": 4.8,
+    "hours": "Mon–Sun 7:00–17:00",
+    "bestSellers": ["Cappuccino", "Seasonal Latte", "Filter"],
+    "coords": { "lat": 51.0168, "lng": -114.0829 }
+  },
+  {
+    "id": "philsebastian-inglewood",
+    "name": "Phil & Sebastian - Inglewood",
+    "neighborhood": "Inglewood",
+    "address": "2207 9 Ave SE, Calgary, AB",
+    "rating": 4.9,
+    "hours": "Mon–Sun 7:00–18:00",
+    "bestSellers": ["Flat White", "Espresso", "Drip Coffee"],
+    "coords": { "lat": 51.0385, "lng": -114.0261 }
+  },
+  {
+    "id": "rosso-ramsey",
+    "name": "Rosso Coffee Roasters - Ramsay",
+    "neighborhood": "Ramsay",
+    "address": "1402 9 Ave SE, Calgary, AB",
+    "rating": 4.5,
+    "hours": "Mon–Sun 7:00–17:00",
+    "bestSellers": ["Americano", "Mocha", "Cold Brew"],
+    "coords": { "lat": 51.0412, "lng": -114.0265 }
+  },
+  {
+    "id": "goodearth-aspen",
+    "name": "Good Earth Coffeehouse - Aspen",
+    "neighborhood": "Aspen",
+    "address": "383 Aspen Glen Landing SW, Calgary, AB",
+    "rating": 4.4,
+    "hours": "Mon–Sun 7:00–18:00",
+    "bestSellers": ["Mocha", "Chai Latte", "Iced Latte"],
+    "coords": { "lat": 51.0536, "lng": -114.1812 }
+  },
+  {
+    "id": "deville-downtown",
+    "name": "Deville Coffee - Downtown",
+    "neighborhood": "Downtown",
+    "address": "808 1 St SW, Calgary, AB",
+    "rating": 4.6,
+    "hours": "Mon–Fri 6:30–17:00, Sat–Sun 8:00–17:00",
+    "bestSellers": ["Espresso", "Latte", "Flat White"],
+    "coords": { "lat": 51.0462, "lng": -114.0631 }
+  },
+  {
+    "id": "heritage-roasting",
+    "name": "Calgary Heritage Roasting Co.",
+    "neighborhood": "Manchester",
+    "address": "2020 11 St SE, Calgary, AB",
+    "rating": 4.7,
+    "hours": "Mon–Sun 8:00–16:00",
+    "bestSellers": ["Pour Over", "Cold Brew", "Espresso"],
+    "coords": { "lat": 51.0308, "lng": -114.0414 }
+  },
+  {
+    "id": "kawa-beltline",
+    "name": "Kawa Espresso Bar",
+    "neighborhood": "Beltline",
+    "address": "1333 8 St SW, Calgary, AB",
+    "rating": 4.3,
+    "hours": "Mon–Sun 7:00–22:00",
+    "bestSellers": ["Cappuccino", "Latte", "Drip Coffee"],
+    "coords": { "lat": 51.0409, "lng": -114.0838 }
+  },
+  {
+    "id": "beano-beltline",
+    "name": "Caffe Beano",
+    "neighborhood": "Beltline",
+    "address": "1613 9 St SW, Calgary, AB",
+    "rating": 4.2,
+    "hours": "Mon–Sun 6:00–22:00",
+    "bestSellers": ["Latte", "Mocha", "Cold Brew"],
+    "coords": { "lat": 51.0417, "lng": -114.0856 }
+  },
+  {
+    "id": "gravity-inglewood",
+    "name": "Gravity Espresso & Wine Bar",
+    "neighborhood": "Inglewood",
+    "address": "909 10 St SE, Calgary, AB",
+    "rating": 4.9,
+    "hours": "Mon–Sun 7:00–22:00",
+    "bestSellers": ["Flat White", "Espresso", "Cappuccino"],
+    "coords": { "lat": 51.0412, "lng": -114.0302 }
+  },
+  {
+    "id": "higherground-kensington",
+    "name": "Higher Ground Cafe",
+    "neighborhood": "Kensington",
+    "address": "1126 Kensington Rd NW, Calgary, AB",
+    "rating": 4.5,
+    "hours": "Mon–Sun 7:00–23:00",
+    "bestSellers": ["Mocha", "Latte", "Iced Coffee"],
+    "coords": { "lat": 51.0538, "lng": -114.0862 }
+  },
+  {
+    "id": "analog-southcentre",
+    "name": "Analog Coffee - Southcentre",
+    "neighborhood": "Southcentre",
+    "address": "100 Anderson Rd SE, Calgary, AB",
+    "rating": 4.7,
+    "hours": "Mon–Sat 9:30–21:00, Sun 11:00–18:00",
+    "bestSellers": ["Espresso", "Latte", "Pour Over"],
+    "coords": { "lat": 50.9568, "lng": -114.0712 }
+  },
+  {
+    "id": "philsebastian-mardaloop",
+    "name": "Phil & Sebastian - Marda Loop",
+    "neighborhood": "Marda Loop",
+    "address": "2043 33 Ave SW, Calgary, AB",
+    "rating": 4.8,
+    "hours": "Mon–Sun 7:00–18:00",
+    "bestSellers": ["Cappuccino", "Flat White", "Filter"],
+    "coords": { "lat": 51.0242, "lng": -114.1107 }
+  },
+  {
+    "id": "rosso-stephenave",
+    "name": "Rosso Coffee Roasters - Stephen Ave",
+    "neighborhood": "Downtown",
+    "address": "17 Ave SW, Calgary, AB",
+    "rating": 4.6,
+    "hours": "Mon–Fri 7:00–17:00, Sat–Sun 8:00–16:00",
+    "bestSellers": ["Latte", "Mocha", "Americano"],
+    "coords": { "lat": 51.0447, "lng": -114.0668 }
+  },
+  {
+    "id": "goodearth-uc",
+    "name": "Good Earth Coffeehouse - U of C",
+    "neighborhood": "University District",
+    "address": "2500 University Dr NW, Calgary, AB",
+    "rating": 4.4,
+    "hours": "Mon–Fri 7:00–20:00, Sat–Sun 8:00–18:00",
+    "bestSellers": ["Espresso", "Latte", "Iced Latte"],
+    "coords": { "lat": 51.0779, "lng": -114.1294 }
+  }
+]

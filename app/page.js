@@ -1,103 +1,71 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useMemo, useState } from "react";
+import CafeCard from "@/components/CafeCard";
+import { loadStamps, saveStamps } from "@/lib/storage";
 
-export default function Home() {
+export default function HomePage() {
+  const [cafes, setCafes] = useState([]);
+  const [stamps, setStamps] = useState(new Set());
+  const [q, setQ] = useState("");
+
+  useEffect(() => {
+    fetch("/cafes.json").then((r) => r.json()).then(setCafes);
+    setStamps(loadStamps());
+  }, []);
+
+  const top = useMemo(
+    () => [...cafes].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0)).slice(0, 4),
+    [cafes]
+  );
+
+  function toggleStamp(id) {
+    const s = new Set(stamps);
+    s.has(id) ? s.delete(id) : s.add(id);
+    setStamps(s); saveStamps(s);
+  }
+
+  function onQuickSearch(e) {
+    e.preventDefault();
+    window.location.href = q.trim() ? `/cafes?q=${encodeURIComponent(q.trim())}` : "/cafes";
+  }
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="space-y-10">
+      <section className="text-center space-y-4">
+        <h1 className="text-4xl font-bold">Sip. Stamp. Explore Calgary’s café scene.</h1>
+        <p className="text-gray-700 max-w-2xl mx-auto">
+          Find local cafés, see what’s popular, leave reviews, and collect digital stamps—just like a café passport.
+        </p>
+        <div className="flex justify-center gap-3">
+          <a href="/cafes" className="px-4 py-2 rounded-xl bg-amber-700 text-white font-medium">Browse Cafés</a>
+          <a href="/passport" className="px-4 py-2 rounded-xl bg-white border font-medium">View Passport</a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </section>
+
+      <section className="bg-white rounded-xl shadow p-5">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-gray-100">Featured</span>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2">
+          {top.map((c) => (
+            <CafeCard key={c.id} cafe={c} stamped={stamps.has(c.id)} onToggleStamp={toggleStamp} />
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-white rounded-xl shadow p-5">
+        <h2 className="text-xl font-semibold text-center mb-4">Quick Search</h2>
+        <form onSubmit={onQuickSearch} className="flex flex-col sm:flex-row justify-center gap-3">
+          <input
+            className="w-full sm:w-80 border rounded-xl px-3 py-2"
+            type="text"
+            placeholder='Try "latte" or "Beltline"'
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <button type="submit" className="px-4 py-2 rounded-xl bg-gray-900 text-white">Search</button>
+        </form>
+      </section>
     </div>
   );
 }
