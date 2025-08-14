@@ -1,9 +1,11 @@
 "use client";
-import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { loginUser } from "@/lib/auth";
 
-export default function LoginPage() {
+import { Suspense, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+
+export const dynamic = "force-dynamic";
+
+function LoginInner() {
   const router = useRouter();
   const sp = useSearchParams();
   const redirectTo = sp.get("redirect") || "/";
@@ -17,7 +19,7 @@ export default function LoginPage() {
       setError("Please fill in both fields.");
       return;
     }
-    loginUser(form.username, form.password);
+
     router.push(redirectTo);
   }
 
@@ -53,3 +55,10 @@ export default function LoginPage() {
   );
 }
 
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginInner />
+    </Suspense>
+  );
+}
